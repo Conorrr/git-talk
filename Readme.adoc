@@ -4,7 +4,7 @@ A presentation looking at how git works.
 
 Based on https://github.com/asciidoctor/asciidoctor-gradle-examples[asciidoctor-gradle-examples]
 
-View online here ..
+View online https://conorrr.github.io/git-talk/git-deck.html#/[here]
 
 ## Running locally
 
