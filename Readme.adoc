@@ -1,0 +1,17 @@
+# Git - Under the hood
+
+A presentation looking at how git works.
+
+Based on https://github.com/asciidoctor/asciidoctor-gradle-examples[asciidoctor-gradle-examples]
+
+View online here ..
+
+## Running locally
+
+The simplest way to view the presentation locally is to use Docker to run a http server.
+
+```
+docker run -d -v $(pwd)/build/asciidoc/revealjs:/var/www:ro -p 127.0.0.1:8080:8080 trinitronx/python-simplehttpserver 
+```
+
+and then navigate to http://localhost:8080/git-deck.html
