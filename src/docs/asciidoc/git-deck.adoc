@@ -1,45 +1,402 @@
-= Example Deck
-Doc Writer <doc.writer@example.org>
-2014-09-09
-:revnumber: {project-version}
-:example-caption!:
-ifndef::imagesdir[:imagesdir: images]
-ifndef::sourcedir[:sourcedir: ../java]
+= Understanding Git
+Conor Restall <conor@restall.io>
+2017-09-04
+:imagesdir: images
 
 == Introduction
-
-[%step]
-* This is an example deck.a
-* This deck teaches something.
-* We just haven't decided what that is yet.
-
-== Speaker Notes
-
-Press the `*s*` key to access speaker notes.
+* Ask questions as I go
+* If you are reading these slides press `S` to view my speaker notes.
 
 [NOTE.speaker]
 --
-You've unlocked the super secret notes area.
-Neat huh?
+Teaching principles - not tools
+For demos I will solely use the command line. If that's not what you're used to don't fret it's not important to remember what I am typing, it's important to remember the concepts I'm explaining.
+There will be some parts where you see me poking around with Git internals.
+
+Not a talk about best practices or how you to use git.
 --
 
-== Source Code
+=== !
+image::https://imgs.xkcd.com/comics/git.png[link=https://xkcd.com/1597/]
+Sound Familiar?
 
-[source,java]
-.Java code from project
-----
-include::{sourcedir}/example/StringUtils.java[tags=contains,indent=0]
-----
+=== What you're (hopefully) going to learn
 
-This page was built by the following command:
+* Basic git data structures
+* What a commit is
+* What a branch is
+* What a merge is
+* What happens when you push and pull
+* What hashes represent
 
- $ ./gradlew asciidoctor
+[NOTE.speaker]
+--
+Remembering a list of git commands is not good enough
 
-== Blank screen
+If you don't understand the git principles the git documentation is useless
 
-You can press `*b*` or `*.*` to blank your current screen.
+Help to describe the basic principles of git so that you can apply these in the real world.
+So that next time you have a problem in git you should be able to understand what went wrong, you should start to understand what certain commands do.
+--
 
-Hit it again to bring it back.
+== Fundementals
+
+* DVCS
+* Hashes
+* .git directory
+
+[NOTE.speaker]
+--
+Before I move on it's important to understand these 2 things.
+
+Git is a DVCS this means that you store the entire repository locally. The git central server is there purely to aid sharing code.
+
+Git uses SHA-1 hashes to represent just about everything. Generally displayed as hex encoded.
+`git hash-object somefile`
+Git uses short hashes to make things a bit simpler.
+`git log --oneline` will show history with short hash. `git log` will show history with full hash.
+Git will give you enough bits of the hash to identifiy a unique file.
+
+I will come on to what hashes represent later.
+Important to get your head around how the hashses work. This is a real lightbulb moment and other understanding stems from there.
+
+As I'm sure many of you have noticed there is a .git directory at the root of each git project.
+The entire repo is stored inside here.
+I will delve into this directory a bit, but don't try to manually manipulate it's contents unless you REALLY know what you're doing.
+--
+
+== Git Data Model
+
+This is the structure that git uses to store commits.
+
+[.stretch]
+image::object-tree.png[]
+
+[NOTE.speaker]
+--
+Here we see the fundemental building blocks of everything stored in git.
+
+One way direction Commits Point to trees, trees point to others trees and blobs, blobs don't point anywhere.
+You can't work you're way back up without lots of searching.
+
+All parts are stored in the same way. So way to differentiate between the different types
+
+Everything is identified by a unique hash
+
+All parts are stored in .git/objects
+
+SideNote: if you run `git gc` or `git pack` then they may be stored slightly differently on disk to save space but the underlying principles are the same.
+
+Git is one big interlocked tree. You will hopefully start to see this as we go along.
+--
+
+=== Commits
+
+Represents a commit - Contain some meta data:
+
+* *tree*: pointer to a tree
+* *author*: author details
+* *committer*: similar to author (rarely different unless you want them to be)
+* *parent*: pointer to a previous commit (initial commit is empty)
+* *commit message*: Text that should describe the commit
+* occasionally some other meta data
+
+[NOTE.speaker]
+--
+Tree - just a hash that points to another commit
+
+Author - The person who wrote the code
+
+Committer - the person who commited the code. These are usually the same person. If you are applying someone else's patch.
+Most git tools don't differentiate between commiter and author.
+
+Autor and committer also include an Epoch timestamp and timezone
+
+Parent - parent commit. It is possible to have multiple parents - e.g. Merges.
+The first commit doesn't have a parent
+
+Lets have a look at a commit.
+
+`git init`
+
+`touch empty.txt`
+
+`git add empty.txt`
+
+`git commit -m 'initial commit - only an empty file'`
+
+Now we have a git in our git repo lets go find it. There is a useful tool to poking around with these internals that is included in git by default `git cat-file`.
+
+Before we can do that we need the hash `git rev-parse HEAD` will give us that
+
+`git cat-file commit <hash>`
+
+If we add another empty file and another commit
+
+`touch empty2.txt`
+
+`git add empty2.txt`
+
+`git commit -m 'second commit - another empty file'`
+
+and then look at the second commit we can see a parent
+--
+
+=== Trees
+
+Represent directories
+
+A tree must point at least 1 other tree or a blob
+
+[NOTE.speaker]
+--
+Contains a the entire file tree
+
+each tree repesents a directory and contains a list of blobs (files) and trees (directories) both identified by their hash
+
+any change to the contents of a directory changes it's hash
+
+Lets have a look at a real repo - using the one we already created
+
+`git cat-file commit <hash>`
+
+Gives is the hash of the tree
+
+`git ls-tree <hash>`
+
+We can see here our 2 files in the git repo - and their file permissions (it is possible to turn off file permissions)
+You'll notice that the 2 files have the exact same hash - this is becuase the files contain byte for byte the same file.
+
+`ls-tree` gives us the root tree node. here we only have 2 files and no directories. Lets add a new directory with a file.
+
+`mkdir dir1`
+
+`touch dir1/empty3.txt`
+
+`git add dir1/empty3.txt`
+
+`git commit -m 'third commit - a third empty file'`
+
+get our new tree hash
+
+`git cat-file commit $(git rev-parse HEAD)`
+
+Now we can see our new directory which is of type tree. For completeness we can have a look inside this directory and see the other file we created.
+
+`git ls-tree <HASH>`
+--
+
+
+=== Blobs
+
+* Represent Files
+* Tracking starts once you run `git add`
+
+[NOTE.speaker]
+--
+Lets look at one of our files. Firstly lets get the hash of the files
+
+`git ls-tree <TREE-HASH>`
+
+Now we can re-use cat-file to view the contents
+
+`git cat-file blob <BLOB-HASH>`
+
+As expected the file is empty.
+
+Lets add some content to a file
+
+`echo 'some file content' > notEmpty.txt`
+
+Lets watch git and see how it changes as we add this file and commit it.
+
+Firstly lets look to see that the file isn't already tracked by git. We can calculate the hash of the file and see that it's not alredy in git.
+
+`git hash-object notEmpty.txt`
+
+`ls .git/objects/`
+
+Now we can add it to git and see what happens
+
+`git add notEmpty.txt`
+
+`ls .git/objects/c2/e7a8d366fd124ec77d39d3ae8a4904d8c1ad3d`
+
+We can see that git has started tracking the file
+
+At this point it's not in a tree though. It will be referenced in the .git/index.
+
+This object has been compressed using zlib so we can't just look directly at the object
+
+Lets commit this new file and see that it's made it into the tree and a new commit is created.
+
+`git commit -m 'our first non-empty file'`
+
+`git rev-parse HEAD` - to get the latest commit
+
+`git cat-file commit <HASH>`
+
+`git ls-tree <HASH>`
+
+More on what happens when we commit a little later on
+
+Questions?
+--
+
+=== What does this all mean for git
+* Every time you make a change to a file then a while new copy of the file is stored in git.
+** This is why git isn't very good at storing large files. Changing 1 byte results in a duplicate file
+* Each commit can directly access it's the exact state without having to play
+* If you commit the same file it will only be stored once
+* There is nothing special about moving or renaming files
+
+[NOTE.speaker]
+--
+Much of this is actually pretty transparent when you're using due to gits good merge tooling.
+
+Questions?
+--
+
+== Branches and Tags
+* Branches are Tags are both `refs`.
+* They are pointers to a commit
+* By convention tags don't change, branches do
+
+[NOTE.speaker]
+--
+We can see call branches in
+`ls .gitrefs/heads`
+
+We can view all tags in
+`ls .git/refs/tags`
+
+Refs as a simple as you can get. They are just a text file with the commit hash in.
+
+`cat 'cat .git/refs/master'` matches `git rev-parse HEAD`
+
+At this point we can start to see that everything in git is stored in this connected data structure. Lots of reuse.
+
+Questions?
+--
+
+== Merging
+
+2 Options for merging:
+
+* Fast-forward merge
+* Merge Commit
+
+[NOTE.speaker]
+--
+By default when you merge the first thing git does is figure out if you can do a fast-forward merge.
+--
+
+=== Fast-forwarding
+
+* TODO insert diagram
+
+[NOTE.speaker]
+--
+A fast-forward merge is when the 2 branches have a shared history and the new commits can be added straight to the branch.
+
+Nothing is actually moved the branch is just changed to point at the new HEAD commit.
+
+[INSERT DISGRAM] - on new slide
+
+You can force the type of merge using `--no-ff` when merging or globally using `git config --global merge.ff false`.
+
+This is sometimes desirable if you want to keep a strict history of when things were branched and merged
+--
+
+=== Merge commits
+Merge commits are commits with 2 or more parents
+
+There are a lots or Merge Strategies and each has lots of options
+
+* Resolve
+* Recursive (default)
+* Octopus (default if you merge more than 2 branches)
+* Ours
+* Subtree
+
+See https://git-scm.com/docs/merge-strategies for more info
+
+[NOTE.speaker]
+--
+If a branch cannot be fast-forwarded then a Merge commit will be created.
+
+*Resolve* This can only resolve two heads (i.e. the current branch and another branch you pulled from) using a 3-way merge algorithm. It tries to carefully detect criss-cross merge ambiguities and is considered generally safe and fast.
+
+
+
+
+
+--
+
+=== MERGE CONFLICT
+image::ahh.gif[background, size=cover]
+
+=== Merge Conflict
+
+* Occurs when the merge strategy can't figure out what the new file will look like.
+
+[NOTE.speaker]
+--
+Lets have a look at what is going on when we get a conflict.
+
+Create a branch and make a change
+
+`git checkout -b branchb`
+
+`vim notEmpty.txt`
+
+`git commit -am 'change contents of notEmpty'`
+
+Switch back to master and create a conflicting change
+
+`git checkout master`
+
+`vim notEmpty.txt`
+
+`git commit -am 'make a colliding change to notEmpty'`
+
+Now when we merge we get into a merge conflict state
+
+`git merge branchb`
+
+`git status`
+
+lets us know we're in a conflict state. We can also look at the contents of `.git/`
+we can see some new files. There are 2 files that point to the original branch and the branch we tried to merge in and a file called MERGE_MODE that lets us know we are mid merge.
+
+Lets quickly fix this and commit
+
+`vim notEmpty.txt`
+
+`git add notEmpty.txt`
+
+When we commit we can see that git has generated us a message explaining the merge.
+
+`git commit`
+
+We can also go back an look at this merge commit and see it's 2 parent commits.
+
+`git cat-file commit $(git rev-parse HEAD)`
+--
+
+=== Viewing Branches
+
+* `git log`
+* `git tree`?
+
+[NOTE.speaker]
+--
+I know I said this isn't a talk on best practices and how to use git but here is the exception because `cat-file` is of course a crazy way to look at history and I don't want to see people manually crawling through commits. Here are some better tools.
+
+git log presents a linear history of commits. Add `--oneline` to see a simpler view of history
+
+I'm sure whatever tool you decide to use for git also displays this information in some form or other.
+--
 
 == Overview
 
