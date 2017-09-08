@@ -2,6 +2,7 @@ buildscript {
     dependencies {
         classpath 'org.ysb33r.gradle:vfs-gradle-plugin:1.0'
         classpath 'commons-httpclient:commons-httpclient:3.1'
+        classpath 'org.ajoberstar:gradle-git-publish:0.3.0'
     }
 }
 
@@ -13,6 +14,7 @@ plugins {
 apply plugin: 'com.github.jruby-gradle.base'
 apply plugin: 'org.ysb33r.vfs'
 apply plugin: 'org.asciidoctor.convert'
+apply plugin: 'org.ajoberstar.git-publish'
 
 jruby {
     defaultRepositories false
@@ -87,9 +89,21 @@ asciidoctor {
         'idprefix': 'slide-',
         'idseparator': '-',
         'docinfo1': '',
-        'revealjs_theme': 'beige',
+        'revealjs_theme': 'Solarized',
         'revealjs_transition': 'linear',
         'revealjs_history': 'true',
         'revealjs_slideNumber': 'true'
     options template_dirs: [new File(templateDir,'templates/slim').absolutePath]
 }
+
+
+gitPublish {
+    repoUri = 'git@github.com:Conorrr/git-talk.git'
+    branch = 'gh-pages'
+
+    contents {
+        from "$buildDir/asciidoc/revealjs"
+    }
+}
+
+gitPublishCopy.dependsOn(asciidoctor)

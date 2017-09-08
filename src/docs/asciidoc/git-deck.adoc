@@ -393,47 +393,9 @@ We can also go back an look at this merge commit and see it's 2 parent commits.
 --
 I know I said this isn't a talk on best practices and how to use git but here is the exception because `cat-file` is of course a crazy way to look at history and I don't want to see people manually crawling through commits. Here are some better tools.
 
-git log presents a linear history of commits. Add `--oneline` to see a simpler view of history
+`git log` presents a linear history of commits. Add `--oneline` to see a simpler view of history
+
+`git tree`
 
 I'm sure whatever tool you decide to use for git also displays this information in some form or other.
 --
-
-== Overview
-
-Press the `*esc*` key to get an overview of your slides.
-
-== Including documents from subdir
-
-.include::subdir/_b.adoc[]
-
-include::subdir/_b.adoc[]
-
-== Images
-
-[.thumb]
-image::sunset.jpg[scaledwidth=75%]
-
-== Attributes
-
-Press the down arrow key to see the next sub-slide.
-
-=== Attributes Part 1
-.Built-in
-asciidoctor-version:: {asciidoctor-version}
-safe-mode-name:: {safe-mode-name}
-docdir:: {docdir}
-docfile:: {docfile}
-imagesdir:: {imagesdir}
-
-=== Attributes Part 2
-.Custom
-project-version:: {project-version}
-sourcedir:: {sourcedir}
-endpoint-url:: {endpoint-url}
-
-== build.gradle
-
-[source,groovy]
-----
-include::{build-gradle}[]
-----
