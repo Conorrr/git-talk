@@ -22,7 +22,7 @@ jruby {
 
 // local mirror TODO move this into init.gradle
 repositories {
-    maven { url 'http://localhost:8989/releases' }
+    maven { url 'http://localhost:8989/proxy/maven/releases/' }
 }
 
 ext {
@@ -31,10 +31,6 @@ ext {
     downloadDir = new File(buildDir,'download')
     templateDir = new File(downloadDir,'templates')
     revealjsDir = new File(downloadDir,'reveal.js')
-}
-
-repositories {
-    jcenter()
 }
 
 dependencies {
