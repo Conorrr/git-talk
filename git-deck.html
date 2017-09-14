@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="author" content="Doc Writer" /><title>Example Deck</title><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport" /><link href="reveal.js/css/reveal.css" rel="stylesheet" /><link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" /><style>/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="author" content="Conor Restall" /><title>Understanding Git</title><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport" /><link href="reveal.js/css/reveal.css" rel="stylesheet" /><link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" /><style>/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
 .CodeRay .line-numbers{border-right:1px solid #d8d8d8;padding:0 0.5em 0 .25em}
 .CodeRay span.line-numbers{display:inline-block;margin-right:.5em;color:rgba(0,0,0,.3)}
@@ -86,114 +86,199 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .insert .insert{color:#080}
 .CodeRay .delete .delete{color:#800}
 .CodeRay .change .change{color:#66f}
-.CodeRay .head .head{color:#f4f}</style><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet" /><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Example Deck</h1><p class="author"><small>Doc Writer</small></p></section><section id="slide-introduction"><h2>Introduction</h2><div class="ulist"><ul><li class="fragment"><p>This is an example deck.a</p></li><li class="fragment"><p>This deck teaches something.</p></li><li class="fragment"><p>We just haven&#8217;t decided what that is yet.</p></li></ul></div></section>
-<section id="slide-speaker-notes"><h2>Speaker Notes</h2><div class="paragraph"><p>Press the <code><strong>s</strong></code> key to access speaker notes.</p></div>
-<aside class="notes"><div class="paragraph"><p>You&#8217;ve unlocked the super secret notes area.
-Neat huh?</p></div></aside></section>
-<section id="slide-source-code"><h2>Source Code</h2><div class="listingblock"><div class="title">Java code from project</div><div class="content"><pre class="CodeRay"><code class="java language-java">Unresolved directive in git-deck.adoc - include::../java/example/StringUtils.java[tags=contains,indent=<span class="integer">0</span>]</code></pre></div></div>
-<div class="paragraph"><p>This page was built by the following command:</p></div>
-<div class="literalblock"><div class="content"><pre>$ ./gradlew asciidoctor</pre></div></div></section>
-<section id="slide-blank-screen"><h2>Blank screen</h2><div class="paragraph"><p>You can press <code><strong>b</strong></code> or <code><strong>.</strong></code> to blank your current screen.</p></div>
-<div class="paragraph"><p>Hit it again to bring it back.</p></div></section>
-<section id="slide-overview"><h2>Overview</h2><div class="paragraph"><p>Press the <code><strong>esc</strong></code> key to get an overview of your slides.</p></div></section>
-<section id="slide-including-documents-from-subdir"><h2>Including documents from subdir</h2><div class="paragraph"><div class="title">include::subdir/_b.adoc[]</div><p>Unresolved directive in git-deck.adoc - include::subdir/_b.adoc[]</p></div></section>
-<section id="slide-images"><h2>Images</h2><div class="imageblock thumb" style=""><img src="./images/sunset.jpg" alt="sunset" /></div></section>
-<section><section id="slide-attributes"><h2>Attributes</h2><div class="paragraph"><p>Press the down arrow key to see the next sub-slide.</p></div></section><section id="slide-attributes-part-1"><h2>Attributes Part 1</h2><div class="dlist"><div class="title">Built-in</div><dl><dt class="hdlist1">asciidoctor-version</dt><dd><p>1.5.5</p></dd><dt class="hdlist1">safe-mode-name</dt><dd><p>unsafe</p></dd><dt class="hdlist1">docdir</dt><dd><p>/home/conor/presentations/git/src/docs/asciidoc</p></dd><dt class="hdlist1">docfile</dt><dd><p>/home/conor/presentations/git/src/docs/asciidoc/git-deck.adoc</p></dd><dt class="hdlist1">imagesdir</dt><dd><p>./images</p></dd></dl></div></section><section id="slide-attributes-part-2"><h2>Attributes Part 2</h2><div class="dlist"><div class="title">Custom</div><dl><dt class="hdlist1">project-version</dt><dd><p>unspecified</p></dd><dt class="hdlist1">sourcedir</dt><dd><p>../java</p></dd><dt class="hdlist1">endpoint-url</dt><dd><p><a href="http://example.org" class="bare">http://example.org</a></p></dd></dl></div></section></section>
-<section id="slide-build-gradle"><h2>build.gradle</h2><div class="listingblock"><div class="content"><pre class="CodeRay"><code class="groovy language-groovy">buildscript {
-    dependencies {
-        classpath <span class="string"><span class="delimiter">'</span><span class="content">org.ysb33r.gradle:vfs-gradle-plugin:1.0</span><span class="delimiter">'</span></span>
-        classpath <span class="string"><span class="delimiter">'</span><span class="content">commons-httpclient:commons-httpclient:3.1</span><span class="delimiter">'</span></span>
-    }
-}
-
-plugins {
-  id <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor.convert</span><span class="delimiter">'</span></span> version <span class="string"><span class="delimiter">'</span><span class="content">1.5.3</span><span class="delimiter">'</span></span>
-  id <span class="string"><span class="delimiter">'</span><span class="content">com.github.jruby-gradle.base</span><span class="delimiter">'</span></span> version <span class="string"><span class="delimiter">'</span><span class="content">1.4.0</span><span class="delimiter">'</span></span>
-}
-
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">com.github.jruby-gradle.base</span><span class="delimiter">'</span></span>
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">org.ysb33r.vfs</span><span class="delimiter">'</span></span>
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor.convert</span><span class="delimiter">'</span></span>
-
-jruby {
-    defaultRepositories <span class="predefined-constant">false</span>
-}
-
-<span class="comment">// local mirror TODO move this into init.gradle</span>
-repositories {
-    maven { url <span class="string"><span class="delimiter">'</span><span class="content">http://localhost:8989/releases</span><span class="delimiter">'</span></span> }
-}
-
-ext {
-    revealjsVersion = <span class="string"><span class="delimiter">'</span><span class="content">3.3.0</span><span class="delimiter">'</span></span>
-    asciidoctorBackendVersion = <span class="string"><span class="delimiter">'</span><span class="content">master</span><span class="delimiter">'</span></span>
-    downloadDir = <span class="keyword">new</span> <span class="predefined-type">File</span>(buildDir,<span class="string"><span class="delimiter">'</span><span class="content">download</span><span class="delimiter">'</span></span>)
-    templateDir = <span class="keyword">new</span> <span class="predefined-type">File</span>(downloadDir,<span class="string"><span class="delimiter">'</span><span class="content">templates</span><span class="delimiter">'</span></span>)
-    revealjsDir = <span class="keyword">new</span> <span class="predefined-type">File</span>(downloadDir,<span class="string"><span class="delimiter">'</span><span class="content">reveal.js</span><span class="delimiter">'</span></span>)
-}
-
-repositories {
-    jcenter()
-}
-
-dependencies {
-    gems <span class="string"><span class="delimiter">'</span><span class="content">rubygems:slim:3.0.8</span><span class="delimiter">'</span></span>
-    gems <span class="string"><span class="delimiter">'</span><span class="content">rubygems:thread_safe:0.3.5</span><span class="delimiter">'</span></span>
-}
-
-task download {
-    doLast {
-        mkdir downloadDir
-        vfs {
-            cp <span class="string"><span class="delimiter">&quot;</span><span class="content">zip:https://github.com/asciidoctor/asciidoctor-reveal.js/archive/</span><span class="inline"><span class="inline-delimiter">${</span>asciidoctorBackendVersion<span class="inline-delimiter">}</span></span><span class="content">.zip!asciidoctor-reveal.js-</span><span class="inline"><span class="inline-delimiter">${</span>asciidoctorBackendVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>,
-            templateDir, <span class="key">recursive</span>:<span class="predefined-constant">true</span>, <span class="key">overwrite</span>:<span class="predefined-constant">true</span>
-            cp <span class="string"><span class="delimiter">&quot;</span><span class="content">zip:https://github.com/hakimel/reveal.js/archive/</span><span class="inline"><span class="inline-delimiter">${</span>revealjsVersion<span class="inline-delimiter">}</span></span><span class="content">.zip!reveal.js-</span><span class="inline"><span class="inline-delimiter">${</span>revealjsVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>,
-            revealjsDir, <span class="key">recursive</span>:<span class="predefined-constant">true</span>, <span class="key">overwrite</span>:<span class="predefined-constant">true</span>
-        }
-    }
-}
-
-download {
-    description <span class="string"><span class="delimiter">&quot;</span><span class="content">Download extra revealjs resources</span><span class="delimiter">&quot;</span></span>
-    outputs.dir templateDir
-    outputs.dir revealjsDir
-}
-
-asciidoctorj {
-  version = <span class="string"><span class="delimiter">'</span><span class="content">1.5.5</span><span class="delimiter">'</span></span>
-}
-
-asciidoctor {
-    dependsOn jrubyPrepare, download
-    sources {
-        include <span class="string"><span class="delimiter">'</span><span class="content">git-deck.adoc</span><span class="delimiter">'</span></span>
-    }
-    resources {
-        from (sourceDir) {
-            include <span class="string"><span class="delimiter">'</span><span class="content">images/**</span><span class="delimiter">'</span></span>
-        }
-        from (downloadDir) {
-            include <span class="string"><span class="delimiter">'</span><span class="content">reveal.js/**</span><span class="delimiter">'</span></span>
-        }
-    }
-    backends <span class="string"><span class="delimiter">'</span><span class="content">revealjs</span><span class="delimiter">'</span></span>
-    attributes \
-        <span class="string"><span class="delimiter">'</span><span class="content">build-gradle</span><span class="delimiter">'</span></span>: file(<span class="string"><span class="delimiter">'</span><span class="content">build.gradle</span><span class="delimiter">'</span></span>),
-        <span class="string"><span class="delimiter">'</span><span class="content">endpoint-url</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">http://example.org</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">source-highlighter</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">coderay</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">imagesdir</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">./images</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">toc</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">left</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">icons</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">font</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">setanchors</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">idprefix</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">slide-</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">idseparator</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">-</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">docinfo1</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">revealjs_theme</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">beige</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">revealjs_transition</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">linear</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">revealjs_history</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">true</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">revealjs_slideNumber</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">true</span><span class="delimiter">'</span></span>
-    options <span class="key">template_dirs</span>: [<span class="keyword">new</span> <span class="predefined-type">File</span>(templateDir,<span class="string"><span class="delimiter">'</span><span class="content">templates/slim</span><span class="delimiter">'</span></span>).absolutePath]
-}</code></pre></div></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+.CodeRay .head .head{color:#f4f}</style><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet" /><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Understanding Git</h1><p class="author"><small>Conor Restall</small></p></section><section><section id="slide-introduction"><h2>Introduction</h2><div class="ulist"><ul><li><p>Ask questions as I go</p></li><li><p>If you are reading these slides press <code>S</code> to view my speaker notes.</p></li></ul></div><aside class="notes"><div class="paragraph"><p>Teaching principles - not tools
+For demos I will solely use the command line. If that&#8217;s not what you&#8217;re used to don&#8217;t fret it&#8217;s not important to remember what I am typing, it&#8217;s important to remember the concepts I&#8217;m explaining.
+There will be some parts where you see me poking around with Git internals.</p></div>
+<div class="paragraph"><p>Not a talk about best practices or how you to use git.</p></div>
+<div class="paragraph"><p>If I get time at I will progress on to breaking down some common and more complex git tasks.</p></div>
+<div class="paragraph"><p>If I start going to fast please stop me.</p></div></aside></section><section><div class="imageblock" style=""><a class="image" href="https://xkcd.com/1597/"><img src="https://imgs.xkcd.com/comics/git.png" alt="git" /></a></div>
+<div class="paragraph"><p>Sound Familiar?</p></div></section><section id="slide-what-you-re-hopefully-going-to-learn"><h2>What you&#8217;re (hopefully) going to learn</h2><div class="ulist"><ul><li><p>Basic git data structures</p></li><li><p>What a commit is</p></li><li><p>What a branch is</p></li><li><p>What a merge is</p></li><li><p>What happens when you push and pull</p></li><li><p>What hashes represent</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Remembering a list of git commands is not good enough</p></div>
+<div class="paragraph"><p>If you don&#8217;t understand the git principles the git documentation is useless (there is still lots of help out there though)</p></div>
+<div class="paragraph"><p>Help to describe the basic principles of git so that you can apply these in the real world.
+So that next time you have a problem in git you should be able to understand what went wrong, you should start to understand what certain commands do.</p></div></aside></section></section>
+<section id="slide-fundementals"><h2>Fundementals</h2><div class="ulist"><ul><li><p>DVCS</p></li><li><p>Hashes</p></li><li><p>.git directory</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Before I move on it&#8217;s important to understand these 3 things.</p></div>
+<div class="paragraph"><p>Git is a DVCS this means that you store the entire repository locally. Git remotes are there purely to aid sharing code.</p></div>
+<div class="paragraph"><p>Git uses SHA-1 hashes to represent just about everything. Generally displayed as hex encoded.
+<code>git hash-object somefile</code></p></div>
+<div class="paragraph"><p>Something you&#8217;ll have probably already noticed if you used git for a while is that git sometimes uses short hashes to make things a bit easier.</p></div>
+<div class="paragraph"><p><code>git log --oneline</code> will show history with short hash. <code>git log</code> will show history with full hash.
+Git will give you enough bits of the hash to identifiy a unique object.</p></div>
+<div class="paragraph"><p>I will come on to what hashes represent later.
+Important to get your head around how the hashses work. If you ever change anything in git then the hash will be different, you&#8217;re not really modifying anything.
+Likewise if you have the same hashed object twice it will only be stored once.
+This is a bit of a lightbulb moment and other understanding stems from there.</p></div>
+<div class="paragraph"><p>As I&#8217;m sure many of you have noticed there is a .git directory at the root of each git project.
+The entire repo is stored inside here.
+I will delve into this directory a bit, but don&#8217;t try to manually manipulate it&#8217;s contents unless you REALLY know what you&#8217;re doing.
+If git is broken it&#8217;s not really very friendly.</p></div></aside></section>
+<section><section id="slide-git-data-model"><h2>Git Data Model</h2><div class="paragraph"><p>This is the structure that git uses to store commits.</p></div><div class="imageblock stretch" style=""><img src="./images/object-tree.png" alt="object tree" height="100%" /></div><aside class="notes"><div class="paragraph"><p>Here we see the fundemental building blocks of everything stored in git.</p></div>
+<div class="paragraph"><p>One way direction Commits Point to trees, trees point to others trees and blobs, blobs don&#8217;t point anywhere.
+You can&#8217;t work you&#8217;re way back up without lots of searching.</p></div>
+<div class="paragraph"><p>All parts are stored in the same way. So way to differentiate between the different types</p></div>
+<div class="paragraph"><p>All parts are stored in .git/objects</p></div>
+<div class="paragraph"><p>SideNote: if you run <code>git gc</code> or <code>git pack</code> then they may be stored slightly differently on disk to save space but the underlying principles are the same.</p></div>
+<div class="paragraph"><p>Git is one big interlocked graph. You will hopefully start to see this as we go along.</p></div></aside></section><section id="slide-commits"><h2>Commits</h2><div class="paragraph"><p>Represents a commit - Contain some meta data:</p></div>
+<div class="ulist"><ul><li><p><strong>tree</strong>: pointer to a tree</p></li><li><p><strong>author</strong>: author details</p></li><li><p><strong>committer</strong>: similar to author (rarely different unless you want them to be)</p></li><li><p><strong>parent</strong>: pointer to a previous commit (initial commit is empty)</p></li><li><p><strong>commit message</strong>: Text that should describe the commit</p></li><li><p>occasionally some other meta data</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Tree - just a hash that points to the files in the commit - I&#8217;ll come on to trees on my next slide.</p></div>
+<div class="paragraph"><p>Author - The person who wrote the code</p></div>
+<div class="paragraph"><p>Committer - the person who commited the code. These are usually the same person. If you are applying someone else&#8217;s patch.
+Most git tools don&#8217;t differentiate between commiter and author.</p></div>
+<div class="paragraph"><p>Autor and committer fields are usually just also include an Epoch timestamp and timezone</p></div>
+<div class="paragraph"><p>Parent - parent commit. It is possible to have multiple parents - e.g. Merges.
+The first commit doesn&#8217;t have a parent</p></div>
+<div class="paragraph"><p>Lets have a look at a commit.</p></div>
+<div class="paragraph"><p><code>git init</code></p></div>
+<div class="paragraph"><p><code>touch empty.txt</code></p></div>
+<div class="paragraph"><p><code>git add empty.txt</code></p></div>
+<div class="paragraph"><p><code>git commit -m 'initial commit - only an empty file'</code></p></div>
+<div class="paragraph"><p>Now we have a commit in our git repo lets have a look at it.</p></div>
+<div class="paragraph"><p>There is a useful tool to poking around with these internals that is included in git by default <code>git cat-file</code>.</p></div>
+<div class="paragraph"><p>Before we can do that we need the hash of the commit <code>git rev-parse HEAD</code> will give us that</p></div>
+<div class="paragraph"><p><code>git cat-file commit &lt;hash&gt;</code></p></div>
+<div class="paragraph"><p>If we add another empty file and another commit</p></div>
+<div class="paragraph"><p><code>touch empty2.txt</code></p></div>
+<div class="paragraph"><p><code>git add empty2.txt</code></p></div>
+<div class="paragraph"><p><code>git commit -m 'second commit - another empty file'</code></p></div>
+<div class="paragraph"><p>and then look at the second commit we can see a parent</p></div>
+<div class="paragraph"><p>Any questions about commits?</p></div></aside></section><section id="slide-trees"><h2>Trees</h2><div class="paragraph"><p>Represent directories</p></div>
+<div class="paragraph"><p>A tree must point at least 1 other tree or a blob</p></div>
+<aside class="notes"><div class="paragraph"><p>Represents directory structure and some permissions</p></div>
+<div class="paragraph"><p>each tree repesents a directory and contains a list of blobs (files) and trees (directories) both identified by their hash</p></div>
+<div class="paragraph"><p>any change to the contents of a directory changes it&#8217;s hash</p></div>
+<div class="paragraph"><p>Lets have a look at a real repo - using the one we already created</p></div>
+<div class="paragraph"><p><code>git cat-file -p &lt;hash&gt;</code></p></div>
+<div class="paragraph"><p>Gives us the hash of the tree</p></div>
+<div class="paragraph"><p><code>git cat-file -p &lt;hash&gt;</code>
+or
+<code>git ls-tree &lt;hash&gt;</code></p></div>
+<div class="paragraph"><p>We can see here our 2 files in the git repo - and their file permissions (it is possible to turn off file permissions)
+You&#8217;ll notice that the 2 files have the exact same hash - this is becuase the files contain byte for byte the same file.</p></div>
+<div class="paragraph"><p><code>ls-tree</code> gives us the root tree node. here we only have 2 files and no directories. Lets add a new directory with a file.</p></div>
+<div class="paragraph"><p><code>mkdir dir1</code></p></div>
+<div class="paragraph"><p><code>touch dir1/empty3.txt</code></p></div>
+<div class="paragraph"><p><code>git add dir1/empty3.txt</code></p></div>
+<div class="paragraph"><p><code>git commit -m 'third commit - a third empty file'</code></p></div>
+<div class="paragraph"><p>get our new tree hash</p></div>
+<div class="paragraph"><p><code>git cat-file commit $(git rev-parse HEAD)</code></p></div>
+<div class="paragraph"><p>Now we can see our new directory which is of type tree. For completeness we can have a look inside this directory and see the other file we created.</p></div>
+<div class="paragraph"><p><code>git ls-tree &lt;HASH&gt;</code></p></div></aside></section><section id="slide-blobs"><h2>Blobs</h2><div class="ulist"><ul><li><p>Represent Files</p></li><li><p>Tracking starts once you run <code>git add</code></p></li><li><p>Stored in <code>.git/objects/</code> (along with commits and trees)</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Lets look at one of our files. Firstly lets get the hash of the files</p></div>
+<div class="paragraph"><p><code>git ls-tree &lt;TREE-HASH&gt;</code></p></div>
+<div class="paragraph"><p>Now we can re-use cat-file to view the contents</p></div>
+<div class="paragraph"><p><code>git cat-file blob &lt;BLOB-HASH&gt;</code></p></div>
+<div class="paragraph"><p>As expected the file is empty.</p></div>
+<div class="paragraph"><p>Lets add some content to a file</p></div>
+<div class="paragraph"><p><code>echo 'some file content' &gt; notEmpty.txt</code></p></div>
+<div class="paragraph"><p>Lets watch git and see how it changes as we add this file and commit it.</p></div>
+<div class="paragraph"><p>Firstly lets look to see that the file isn&#8217;t already tracked by git. We can calculate the hash of the file and see that it&#8217;s not alredy in git.</p></div>
+<div class="paragraph"><p><code>git hash-object notEmpty.txt</code></p></div>
+<div class="paragraph"><p><code>ls .git/objects/</code></p></div>
+<div class="paragraph"><p>All commits, trees and blobs are all stored in <code>.git/objects/</code></p></div>
+<div class="paragraph"><p>Now we can add it to git and see what happens</p></div>
+<div class="paragraph"><p><code>git add notEmpty.txt</code></p></div>
+<div class="paragraph"><p><code>ls .git/objects/c2/e7a8d366fd124ec77d39d3ae8a4904d8c1ad3d</code></p></div>
+<div class="paragraph"><p>We can see that git has started tracking the file</p></div>
+<div class="paragraph"><p>At this point it&#8217;s not in a tree though. It will be referenced in the .git/index.</p></div>
+<div class="paragraph"><p>This object has been compressed using zlib so we can&#8217;t just look directly at the object</p></div>
+<div class="paragraph"><p>Lets commit this new file and see that it&#8217;s made it into the tree and a new commit is created.</p></div>
+<div class="paragraph"><p><code>git commit -m 'our first non-empty file'</code></p></div>
+<div class="paragraph"><p><code>git rev-parse HEAD</code> - to get the latest commit</p></div>
+<div class="paragraph"><p><code>git cat-file commit &lt;HASH&gt;</code></p></div>
+<div class="paragraph"><p><code>git ls-tree &lt;HASH&gt;</code></p></div>
+<div class="paragraph"><p>More on what happens when we commit a little later on</p></div>
+<div class="paragraph"><p>Questions?</p></div></aside></section><section id="slide-what-does-this-all-mean-for-git"><h2>What does this all mean for git</h2><div class="ulist"><ul><li><p>Every time you make a change to a file then a while new copy of the file is stored in git.</p><div class="ulist"><ul><li><p>This is why git isn&#8217;t very good at storing large files. Changing 1 byte results in a duplicate file</p></li></ul></div></li><li><p>Each commit can directly access it&#8217;s the exact state without having to play</p></li><li><p>If you commit the same file it will only be stored once</p></li><li><p>There is nothing special about moving or renaming files</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Much of this is actually pretty transparent when you&#8217;re using due to gits good merge tooling.</p></div>
+<div class="paragraph"><p>Questions?</p></div></aside></section></section>
+<section><section id="slide-branches-and-tags"><h2>Branches and Tags</h2><div class="ulist"><ul><li><p>Branches are Tags are both <code>refs</code>.</p></li><li><p>They are pointers to a commit</p></li><li><p>By convention tags don&#8217;t change, branches do</p></li></ul></div><aside class="notes"><div class="paragraph"><p>We can see call branches in
+<code>ls .gitrefs/heads</code></p></div>
+<div class="paragraph"><p>We can view all tags in
+<code>ls .git/refs/tags</code></p></div>
+<div class="paragraph"><p>Refs as a simple as you can get. They are just a text file with the commit hash in.</p></div>
+<div class="paragraph"><p><code>cat 'cat .git/refs/master'</code> matches <code>git rev-parse HEAD</code></p></div>
+<div class="paragraph"><p>At this point we can start to see that everything in git is stored in this connected data structure. Lots of reuse.</p></div>
+<div class="paragraph"><p>Questions?</p></div></aside></section><section id="slide-annotated-tags"><h2>Annotated Tags</h2><div class="ulist"><ul><li><p>Special type of tags that contain more information</p></li><li><p>Possible to tag any object (commit, tree, blob or even annotated tag)</p></li><li><p>Create an additional object</p></li><li><p>Point the tag ref at the new object</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Annotated tags provide a mechanism to store additional information about a tag.</p></div>
+<div class="paragraph"><p>This is achieved by creating a tag object it has with target object hash, target object type, tag name, the name of the person ("tagger") who created the tag, a message and possibly taggers signature.</p></div></aside></section><section id="slide-summary-so-far"><h2>Summary so far</h2><div class="ulist"><ul><li><p>Refs point at commits</p></li><li><p>Commits point at other commits and a tree</p></li><li><p>Trees point at blobs</p></li><li><p>Blobs are just zipped files</p></li></ul></div>
+<div class="paragraph"><p>QUESTIONS?</p></div>
+<aside class="notes"><div class="paragraph"><p>Important to understand these are all intertwined, but not cyclical.</p></div>
+<div class="paragraph"><p>The structure is a "directed acyclic graph"</p></div></aside></section></section>
+<section><section id="slide-merging"><h2>Merging</h2><div class="paragraph"><p>2 Options for merging:</p></div><div class="ulist"><ul><li><p>Fast-forward merge</p></li><li><p>Merge Commit</p></li></ul></div><aside class="notes"><div class="paragraph"><p>By default when you merge the first thing git does is figure out if you can do a fast-forward merge.</p></div></aside></section><section id="slide-fast-forwarding"><h2>Fast-forwarding</h2><div class="imageblock" style=""><img src="http://www.kdgregory.com/images/blog/git-merge-ff.png" alt="git merge ff" /></div>
+<aside class="notes"><div class="paragraph"><p>A fast-forward merge is when the 2 branches have a shared history and the new commits can be added straight to the branch.</p></div>
+<div class="paragraph"><p>Nothing is actually moved or copied the branch is just changed to point at the new HEAD commit.</p></div>
+<div class="paragraph"><p>You can force the type of merge using <code>--no-ff</code> when merging or globally using <code>git config --global merge.ff false</code>.</p></div>
+<div class="paragraph"><p>This is sometimes desirable if you want to keep a strict history of when things were branched and merged</p></div></aside></section><section id="slide-merge-commits"><h2>Merge commits</h2><div class="imageblock" style=""><img src="./images/git-diagrams-3.png" alt="git diagrams 3" /></div></section><section><div class="paragraph"><p>Merge commits are commits with 2 or more parents</p></div>
+<div class="paragraph"><p>There are a lots or Merge Strategies and each has lots of options</p></div>
+<div class="ulist"><ul><li><p>Resolve</p></li><li><p>Recursive (default)</p></li><li><p>Octopus (default if you merge more than 2 branches)</p></li><li><p>Ours</p></li><li><p>Subtree</p></li></ul></div>
+<div class="paragraph"><p>See <a href="https://git-scm.com/docs/merge-strategies" class="bare">https://git-scm.com/docs/merge-strategies</a> for more info</p></div>
+<aside class="notes"><div class="paragraph"><p><a href="https://git-scm.com/docs/merge-strategies" class="bare">https://git-scm.com/docs/merge-strategies</a>
+If a branch cannot be fast-forwarded then a Merge commit will be created.</p></div>
+<div class="paragraph"><p><strong>Resolve</strong> This can only resolve two heads (i.e. the current branch and another branch you pulled from) using a 3-way merge algorithm. It tries to carefully detect criss-cross merge ambiguities and is considered generally safe and fast.</p></div>
+<div class="paragraph"><p><strong>Recursive</strong> This can only resolve two heads using a 3-way merge algorithm. Additionally this can detect and handle merges involving renames. This is the default merge strategy when pulling or merging one branch.</p></div>
+<div class="paragraph"><p><strong>Octopus</strong> This resolves cases with more than two heads, but refuses to do a complex merge that needs manual resolution.</p></div>
+<div class="paragraph"><p><strong>Ours</strong> Ignore all other changes. Even changes to untouched files and new files.</p></div>
+<div class="paragraph"><p><strong>Subtree</strong> This is a modified recursive strategy. When merging trees A and B, if B corresponds to a subtree of A (actual files), B is first adjusted to match the tree structure of A, instead of reading the trees at the same level. This adjustment is also done to the common ancestor tree.</p></div>
+<div class="paragraph"><p>What happens if one of these merege strategies come across something that can&#8217;t be automatically merged.</p></div></aside></section><section id="slide-merge-conflict" data-background-image="./images/ahh.gif" data-background-size="cover"><h2>MERGE CONFLICT</h2></section><section id="slide-merge-conflict-2"><h2>Merge Conflict</h2><div class="ulist"><ul><li><p>Occurs when the merge strategy can&#8217;t figure out what the new file will look like.</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Conflicts sometimes happen because of genuine collisions e.g. a method is refactored in different ways on the 2 branches.
+Sometimes they are because the merge stategy doesn&#8217;t understand what is going on. E.G. 2 new method are added to a class in the same place.</p></div>
+<div class="paragraph"><p>Lets have a look at what is going on when we get a conflict.</p></div>
+<div class="paragraph"><p>Create a branch and make a change</p></div>
+<div class="paragraph"><p><code>git checkout -b branchb</code></p></div>
+<div class="paragraph"><p><code>vim notEmpty.txt</code></p></div>
+<div class="paragraph"><p><code>git commit -am 'change contents of notEmpty'</code></p></div>
+<div class="paragraph"><p>Switch back to master and create a conflicting change</p></div>
+<div class="paragraph"><p><code>git checkout master</code></p></div>
+<div class="paragraph"><p><code>vim notEmpty.txt</code></p></div>
+<div class="paragraph"><p><code>git commit -am 'make a colliding change to notEmpty'</code></p></div>
+<div class="paragraph"><p>Now when we merge we get into a merge conflict state</p></div>
+<div class="paragraph"><p><code>git merge branchb</code></p></div>
+<div class="paragraph"><p><code>git status</code></p></div>
+<div class="paragraph"><p>lets us know we&#8217;re in a conflict state. We can also look at the contents of <code>.git/</code>
+we can see some new files. There are 2 files that point to the original branch and the branch we tried to merge in and a file called MERGE_MODE that lets us know we are mid merge.</p></div>
+<div class="paragraph"><p>This is what I want to impress onto you. The current state of the git repo is represented by a few text files in this repo. Nothing special or magic. You don&#8217;t have to know what these files are exactly or precisely how the affect git to understand the simplicity of it.</p></div>
+<div class="paragraph"><p>Lets quickly fix this and commit</p></div>
+<div class="paragraph"><p><code>vim notEmpty.txt</code></p></div>
+<div class="paragraph"><p><code>git add notEmpty.txt</code></p></div>
+<div class="paragraph"><p>When we commit we can see that git has generated us a message explaining the merge.</p></div>
+<div class="paragraph"><p><code>git commit</code></p></div>
+<div class="paragraph"><p>We can also go back an look at this merge commit and see it&#8217;s 2 parent commits.</p></div>
+<div class="paragraph"><p><code>git cat-file commit $(git rev-parse HEAD)</code></p></div></aside></section></section>
+<section id="slide-viewing-branches"><h2>Viewing Branches</h2><div class="ulist"><ul><li><p><code>git log</code></p></li><li><p><code>git log --graph --oneline</code>?</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>I know I said this isn&#8217;t a talk on best practices and how to use git but here is the exception because <code>cat-file</code> is of course a crazy way to look at history and I don&#8217;t want to see people manually crawling through commits. Here are some better tools.</p></div>
+<div class="paragraph"><p><code>git log</code> presents a linear history of commits. Add <code>--oneline</code> to see a simpler view of history. Displays a flattened graph.</p></div>
+<div class="paragraph"><p><code>git log --graph</code> displays branches, much easier to see what commits were made near to each others.</p></div>
+<div class="paragraph"><p>I&#8217;m sure whatever tool you decide to use for git also displays this information in some form or other.</p></div></aside></section>
+<section><section id="slide-rebasing"><h2>Rebasing</h2><div class="ulist"><ul><li><p>Controversial</p></li><li><p>Rewriting history</p></li></ul></div><aside class="notes"><div class="paragraph"><p>Some people swear by always rebasing, Others swear by never rebasing even to go as far as forcing merges when they can fast forward. Personally I dislike rebasing.</p></div>
+<div class="paragraph"><p>Clean history vs actual history</p></div>
+<div class="paragraph"><p>Rebasing is about replaying changes from a different base.</p></div></aside></section><section><div class="imageblock" style=""><img src="./images/git-diagrams-1.png" alt="git diagrams 1" /></div>
+<aside class="notes"><div class="paragraph"><p>Example:</p></div>
+<div class="paragraph"><p>We have a branch coming off our master.</p></div>
+<div class="paragraph"><p>Now we want to bring these changes back onto master but we want a linear history (for whatever reason) alternatively it&#8217;s a way to resolve conflicts.</p></div></aside></section><section><div class="imageblock" style=""><img src="./images/git-diagrams-2.png" alt="git diagrams 2" /></div>
+<aside class="notes"><div class="paragraph"><p>If a base commit isn&#8217;t specified. Then git will try to work out where the branch deviated from the target branch.</p></div>
+<div class="paragraph"><p>Changing history isn&#8217;t as simple as it might seem. Don&#8217;t forget commits contain entire files so you can&#8217;t just point your current commit at a new base.</p></div>
+<div class="paragraph"><p>Git will go to the original commits, calculate the diff of what changed and then replay the diff of each commit on top of the new base.
+If a conflict is hit the rebase pauses and you&#8217;ll have to manually solve the conflict.</p></div>
+<div class="paragraph"><p>Change the current branch to point at this new commit.</p></div>
+<div class="paragraph"><p>It&#8217;s important to be aware that the old commits aren&#8217;t deleted, they just aren&#8217;t in the current commit history.</p></div>
+<div class="paragraph"><p>We can then fast-forward these new commits into the original branch. I.E. Update master branch to point at the new head commit.</p></div>
+<div class="paragraph"><p>I&#8217;m not going to go into interactive rebasing. But I&#8217;ll say that it allows you to "change" what was commited.</p></div></aside></section></section>
+<section id="slide-more-resources"><h2>More Resources</h2><div class="ulist"><ul><li><p><a href="https://git-scm.com/docs/" class="bare">https://git-scm.com/docs/</a> - Reference Docs</p></li><li><p><a href="https://git-scm.com/book/en/v2/" class="bare">https://git-scm.com/book/en/v2/</a> - Book called "Pro Git" by Scott Chacon and Ben Straub</p></li><li><p><a href="http://gitimmersion.com" class="bare">http://gitimmersion.com</a> - really good resource for learning git</p></li><li><p>Google</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>The book is really good and is available for free under Creative Commons License</p></div>
+<div class="paragraph"><p>Or Print versions are available</p></div>
+<div class="paragraph"><p>Git is really popular and quite complicated. This has lead to loads of really good online git resources being created.</p></div>
+<div class="paragraph"><p>I know lots of devs learn best by doing. <a href="http://gitimmersion.com" class="bare">http://gitimmersion.com</a> is a very hands on and simple learning tool.</p></div>
+<div class="paragraph"><p>Hopefully I&#8217;ve given yo enough knowledge that you know what to search for.</p></div></aside></section>
+<section id="slide-didn-t-talk-about"><h2>Didn&#8217;t talk about</h2><div class="ulist"><ul><li><p>Remotes incl. Pushing and Pulling</p></li><li><p>Interactive rebasing</p></li><li><p>Resetting</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>There is of course lots more to know about git, Hopefully I have given you enough of an understanding</p></div>
+<div class="paragraph"><p>Remotes - wanted to include these but ultimately I ran out of time
+Interactive Rebasing - Wanted to avoid teaching tools
+Resetting - basically undoing</p></div></aside></section>
+<section id="slide-thanks"><h2>Thanks</h2><aside class="notes"><div class="paragraph"><p>Thanks for coming and listening.</p></div>
+<div class="paragraph"><p>I hope it was helpful.</p></div>
+<div class="paragraph"><p>I will share out slides later today</p></div>
+<div class="paragraph"><p>If you have any git questions feel free to ask me at any point</p></div>
+<div class="paragraph"><p>All feedback is much appreciated</p></div></aside></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
 Reveal.initialize({
   // Display controls in the bottom right corner
   controls: true,
@@ -234,7 +319,7 @@ Reveal.initialize({
   previewLinks: false,
   // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
   // NOTE setting the theme in the config no longer works in reveal.js 3.x
-  //theme: Reveal.getQueryHash().theme || 'beige',
+  //theme: Reveal.getQueryHash().theme || 'solarized',
   // Transition style (e.g., none, fade, slide, convex, concave, zoom)
   transition: Reveal.getQueryHash().transition || 'linear',
   // Transition speed (e.g., default, fast, slow)
