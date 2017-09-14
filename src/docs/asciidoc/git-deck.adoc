@@ -200,7 +200,6 @@ Now we can see our new directory which is of type tree. For completeness we can 
 `git ls-tree <HASH>`
 --
 
-
 === Blobs
 
 * Represent Files
@@ -317,6 +316,8 @@ This is achieved by creating a tag object it has with target object hash, target
 * Trees point at blobs
 * Blobs are just zipped files
 
+QUESTIONS?
+
 [NOTE.speaker]
 --
 Important to understand these are all intertwined, but not cyclical.
@@ -344,9 +345,7 @@ image::http://www.kdgregory.com/images/blog/git-merge-ff.png[source=https://dzon
 --
 A fast-forward merge is when the 2 branches have a shared history and the new commits can be added straight to the branch.
 
-Nothing is actually moved the branch is just changed to point at the new HEAD commit.
-
-[INSERT DISGRAM] - on new slide
+Nothing is actually moved or copied the branch is just changed to point at the new HEAD commit.
 
 You can force the type of merge using `--no-ff` when merging or globally using `git config --global merge.ff false`.
 
@@ -354,6 +353,11 @@ This is sometimes desirable if you want to keep a strict history of when things 
 --
 
 === Merge commits
+
+image::git-diagrams-3.png[]
+
+=== !
+
 Merge commits are commits with 2 or more parents
 
 There are a lots or Merge Strategies and each has lots of options
@@ -382,8 +386,8 @@ If a branch cannot be fast-forwarded then a Merge commit will be created.
 *Subtree* This is a modified recursive strategy. When merging trees A and B, if B corresponds to a subtree of A (actual files), B is first adjusted to match the tree structure of A, instead of reading the trees at the same level. This adjustment is also done to the common ancestor tree.
 
 What happens if one of these merege strategies come across something that can't be automatically merged.
-
 --
+
 
 === MERGE CONFLICT
 image::ahh.gif[background, size=cover]
@@ -506,18 +510,51 @@ We can then fast-forward these new commits into the original branch. I.E. Update
 I'm not going to go into interactive rebasing. But I'll say that it allows you to "change" what was commited.
 --
 
-== Remotes
-* Remote repos are just like your git repo on your pc
-* Git will copy the contents of remote repos
-* - Prefix regs with repo name
-* -
-
-=== Pulling
-* `git fetch` + `git merge origin/{branch name}`
+== More Resources
+* https://git-scm.com/docs/ - Reference Docs
+* https://git-scm.com/book/en/v2/ - Book called "Pro Git" by Scott Chacon and Ben Straub
+* http://gitimmersion.com - really good resource for learning git
+* Google
 
 [NOTE.speaker]
 --
-git pull is just 2 git commands amalgamated together.
+The book is really good and is available for free under Creative Commons License
+
+Or Print versions are available
+
+Git is really popular and quite complicated. This has lead to loads of really good online git resources being created.
+
+I know lots of devs learn best by doing. http://gitimmersion.com is a very hands on and simple learning tool.
+
+Hopefully I've given yo enough knowledge that you know what to search for.
 --
 
-== Pushing
+== Didn't talk about
+
+* Remotes incl. Pushing and Pulling
+* Interactive rebasing
+* Resetting
+
+[NOTE.speaker]
+--
+There is of course lots more to know about git, Hopefully I have given you enough of an understanding
+
+Remotes - wanted to include these but ultimately I ran out of time
+Interactive Rebasing - Wanted to avoid teaching tools
+Resetting - basically undoing
+--
+
+== Thanks
+
+[NOTE.speaker]
+--
+Thanks for coming and listening.
+
+I hope it was helpful.
+
+I will share out slides later today
+
+If you have any git questions feel free to ask me at any point
+
+All feedback is much appreciated
+--
